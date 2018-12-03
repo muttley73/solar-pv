@@ -147,7 +147,7 @@ class SolarMax {
     }
 
     function getsmparam($command) {
-        $V_MSG = $this->mkmsg($this->host, $command);
+        $V_MSG = $this->mkmsg($this->device_addr, $command);
         $V_RV = fwrite($this->handlerSolarMax, $V_MSG);
         if (!$V_RV) die("Write error: $!");
         # Reading first 9 bytes
@@ -159,10 +159,10 @@ class SolarMax {
             die("Invalid response from header");
         }
 
-        if ($matches[1] != $this->host) {
+        if ($matches[1] != $this->device_addr) {
             flush();
             fclose($this->handlerSolarMax);
-            die("wrong source address: {$matches[1]} != $this->host");
+            die("wrong source address: {$matches[1]} != $this->device_addr");
         }
         $V_LEN = hexdec($matches[2]);
         $V_LEN -= 9; # header is already in
