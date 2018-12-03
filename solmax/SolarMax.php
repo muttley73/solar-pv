@@ -66,7 +66,7 @@ class SolarMax {
             "IDC" => ["name" => "DC current [mA]", "value" => $this->convert() * 10],
             "IL1" => ["name" => "AC current [mA]", "value" => $this->convert() * 10],
             */
-            "PAC" => ["name" => "AC power [mW]", "value" => function($v) {return hexdec($v)*500;}],
+            "PAC" => ["name" => "AC power [mW]", "value" => function($v) {return hexdec($v)*500/1000;}],
             /*
             "PIN" => ["name" => "Power installed [mW]", "value" => $this->convert() * 500],
             "PRL" => ["name" => "AC power [%]", "value" => $this->convert()],
