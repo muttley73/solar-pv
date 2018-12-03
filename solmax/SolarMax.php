@@ -111,8 +111,8 @@ class SolarMax {
 
     }
 
-    public function getMessage(){
-        return $this->getsmparam('PAC');
+    public function getMessage($command){
+        return $this->getsmparam($command);
 
     }
 
