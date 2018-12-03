@@ -154,7 +154,6 @@ class SolarMax {
         $V_MSG = fread($this->handlerSolarMax, 9);
 
         if (!preg_match("/([0-9A-F]{2});FB;([0-9A-F]{2})/", $V_MSG, $matches)) {
-            var_dump($V_MSG);
             flush();
             fclose($this->handlerSolarMax);
             die("Invalid response from header");

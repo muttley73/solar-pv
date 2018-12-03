@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solmax/pv.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="122" selection-start-line="122" selection-end-line="129" selection-end-column="1" />
+            <state relative-caret-position="391">
+              <caret line="154" column="5" lean-forward="true" selection-start-line="151" selection-start-column="4" selection-end-line="154" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -43,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="137" column="37" lean-forward="true" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
+            <state relative-caret-position="511">
+              <caret line="157" column="41" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -61,6 +61,7 @@
       <find>),</find>
       <find>getsmparam</find>
       <find>AC Power now</find>
+      <find>invali</find>
       <find>check</find>
     </findStrings>
     <replaceStrings>
@@ -148,7 +149,7 @@
       <workItem from="1543744744586" duration="456000" />
       <workItem from="1543745201561" duration="36000" />
       <workItem from="1543766164607" duration="1338000" />
-      <workItem from="1543827159376" duration="15351000" />
+      <workItem from="1543827159376" duration="15869000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1543849400127</created>
@@ -185,11 +186,25 @@
       <option name="project" value="LOCAL" />
       <updated>1543850167642</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="refactor">
+      <created>1543850257664</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1543850257664</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refactor">
+      <created>1543850467914</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1543850467914</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18742000" />
+    <option name="totallyTimeSpent" value="19260000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="25" width="1875" height="1175" extended-state="6" />
@@ -237,13 +252,6 @@
     <entry file="file://$PROJECT_DIR$/CI_components/pv_model.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/solmax/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solmax/start.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -251,17 +259,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/solmax/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/solmax/pv.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="316">
-          <caret line="122" selection-start-line="122" selection-end-line="129" selection-end-column="1" />
+        <state relative-caret-position="391">
+          <caret line="154" column="5" lean-forward="true" selection-start-line="151" selection-start-column="4" selection-end-line="154" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="137" column="37" lean-forward="true" selection-start-line="137" selection-start-column="37" selection-end-line="137" selection-end-column="37" />
+        <state relative-caret-position="511">
+          <caret line="157" column="41" selection-start-line="157" selection-start-column="41" selection-end-line="157" selection-end-column="41" />
         </state>
       </provider>
     </entry>
