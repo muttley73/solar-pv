@@ -28,7 +28,7 @@ class SolarMax {
         $this->timeout = $timeout;
 
         $this->queryList = [
-            "ADR" => ["name" => "Address", "value" => $this->convert()],
+            "ADR" => ["name" => "Address", "value" => function() {return $this->convert();} ],
             "TYP" => ["name" => "Type", "value" => "0x" . $this->convert()],
             "SWV" => ["name" => "Software version", "value" => sprintf("%1.1f", $this->convert() / 10)],
             "DDY" => ["name" => "Date day", "value" => $this->convert()],
