@@ -115,7 +115,7 @@ class SolarMax {
     }
 
     public function getMessage(){
-        return $this->getsmparam($this->queryList['PAC']);
+        return $this->getsmparam('PAC');
 
     }
 
@@ -181,8 +181,8 @@ class SolarMax {
             die("wrong response");
         }
 
-        $retval = $this->handlerSolarMax[$command]['convert']($matches[2]);
-        return [$this->handlerSolarMax[$command]["name"], "value" => $retval];
+        $retval = $this->queryList[$command]['convert']($matches[2]);
+        return [$this->queryList[$command]["name"], "value" => $retval];
     }
 
     private function connect($host, $port, $timeout = 3) {
