@@ -141,7 +141,7 @@ class SolarMax {
         $msg = is_array($command) ? "64:" . implode(';', $command) : "64:" . $command;
         $len = strlen("{" . $src . ";" . $dst . ";" . $len . "|" . $msg . "|" . $cs . "}");
         $len = sprintf("%02X", $len);
-        $cs = checksum16($src . ";" . $dst . ";" . $len . "|" . $msg . "|");
+        $cs = $this->checksum16($src . ";" . $dst . ";" . $len . "|" . $msg . "|");
         $cs = sprintf("%04X", $cs);
         return "{" . $src . ";" . $dst . ";" . $len . "|" . $msg . "|" . $cs . "}";
     }
