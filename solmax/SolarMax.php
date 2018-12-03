@@ -181,7 +181,7 @@ class SolarMax {
             die("wrong response");
         }
 
-        $retval = $this->queryList[$command]['convert']($matches[2]);
+        $retval = $this->queryList[$command]['value']($matches[2]);
         return [$this->queryList[$command]["name"], "value" => $retval];
     }
 
