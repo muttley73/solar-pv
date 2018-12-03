@@ -30,7 +30,7 @@ class SolarMax {
         $this->queryList = [
             "ADR" => ["name" => "Address", "value" => function($v) {return $this->convert($v);} ],
             "TYP" => ["name" => "Type", "value" => function($v) { return "0x" . $this->convert($v);}],
-            "SWV" => ["name" => "Software version", "value" => sprintf("%1.1f", $this->convert($v) / 10)],
+            "SWV" => ["name" => "Software version", "value" => function($v) {sprintf("%1.1f", $this->convert($v) / 10);}],
             "DDY" => ["name" => "Date day", "value" => function($v) {return $this->convert($v);}],
             "DMT" => ["name" => "Date month", "value" => function($v) {return $this->convert($v);}],
             "DYR" => ["name" => "Date year", "value" => function($v) {return $this->convert($v);}],
