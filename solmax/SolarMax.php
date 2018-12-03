@@ -147,7 +147,7 @@ class SolarMax {
     }
 
     function getsmparam($command) {
-        $V_MSG = mkmsg($this->host, $command);
+        $V_MSG = $this->mkmsg($this->host, $command);
         $V_RV = fwrite($this->handlerSolarMax, $V_MSG);
         if (!$V_RV) die("Write error: $!");
         # Reading first 9 bytes
