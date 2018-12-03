@@ -43,8 +43,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="379">
-              <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
+            <state relative-caret-position="291">
+              <caret line="55" column="108" selection-start-line="55" selection-start-column="108" selection-end-line="55" selection-end-column="108" />
             </state>
           </provider>
         </entry>
@@ -149,7 +149,7 @@
       <workItem from="1543744744586" duration="456000" />
       <workItem from="1543745201561" duration="36000" />
       <workItem from="1543766164607" duration="1338000" />
-      <workItem from="1543827159376" duration="16509000" />
+      <workItem from="1543827159376" duration="16991000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1543849400127</created>
@@ -228,17 +228,31 @@
       <option name="project" value="LOCAL" />
       <updated>1543851354225</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="refactor">
+      <created>1543851415180</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1543851415180</updated>
+    </task>
+    <task id="LOCAL-00013" summary="refactor">
+      <created>1543851870830</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1543851870830</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19900000" />
+    <option name="totallyTimeSpent" value="20382000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="25" width="1875" height="1175" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16621104" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16621104" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -255,7 +269,7 @@
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24986331" />
       <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
@@ -303,8 +317,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="68" column="100" selection-start-line="68" selection-start-column="100" selection-end-line="68" selection-end-column="100" />
+        <state relative-caret-position="291">
+          <caret line="55" column="108" selection-start-line="55" selection-start-column="108" selection-end-line="55" selection-end-column="108" />
         </state>
       </provider>
     </entry>
