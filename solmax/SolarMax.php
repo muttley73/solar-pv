@@ -28,7 +28,8 @@ class SolarMax {
         $this->timeout = $timeout;
 
         $this->queryList = [
-            "ADR" => ["name" => "Address", "value" => function() {return $this->convert();} ],
+            "ADR" => ["name" => "Address", "value" => function($v) {return $this->convert($v);} ],
+            /*
             "TYP" => ["name" => "Type", "value" => "0x" . $this->convert()],
             "SWV" => ["name" => "Software version", "value" => sprintf("%1.1f", $this->convert() / 10)],
             "DDY" => ["name" => "Date day", "value" => $this->convert()],
@@ -64,7 +65,9 @@ class SolarMax {
             "UL1" => ["name" => "AC voltage [mV]", "value" => $this->convert() * 100],
             "IDC" => ["name" => "DC current [mA]", "value" => $this->convert() * 10],
             "IL1" => ["name" => "AC current [mA]", "value" => $this->convert() * 10],
-            "PAC" => ["name" => "AC power [mW]", "value" => $this->convert() * 500],
+            */
+            "PAC" => ["name" => "AC power [mW]", "value" => function($v) {return $this->convert($v)*500;}],
+            /*
             "PIN" => ["name" => "Power installed [mW]", "value" => $this->convert() * 500],
             "PRL" => ["name" => "AC power [%]", "value" => $this->convert()],
             "CAC" => ["name" => "Start ups", "value" => $this->convert()],
@@ -86,6 +89,7 @@ class SolarMax {
             "EC06" => ["name" => "EC06", "value" => $this->convert()],
             "EC07" => ["name" => "EC07", "value" => $this->convert()],
             "EC08" => ["name" => "EC08", "value" => $this->convert()],
+            */
         ];
 
 
