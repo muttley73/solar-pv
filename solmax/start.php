@@ -15,3 +15,5 @@ $TIMEOUT = 5; # seconds
 
 $sm = new SolarMax($ADDR,$PORT,$DEVICE_ADDR,$TIMEOUT);
 $c = $sm->getMessage('PAC');
+
+var_dump($c);
