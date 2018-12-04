@@ -31,4 +31,8 @@ echo "tramonto: " . $sunset->format("H:m:s") . "\n";
 
 $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-print_r(json_encode($sm->generateReport()));
+$f = $sm->generateReport();
+
+echo $f['PAC']['value'];
+
+//print_r(json_encode($sm->generateReport()));
