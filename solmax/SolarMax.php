@@ -7,7 +7,7 @@
  */
 
 
-
+error_reporting(E_ERROR);
 
 
 class SolarMax {
