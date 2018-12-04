@@ -15,7 +15,7 @@ $lng = 8.9848062; #Longitude (+ to E)
 $ADDR = "10.0.0.123";
 $PORT = "12345";
 $DEVICE_ADDR = "5";
-$TIMEOUT = 5; # seconds
+$TIMEOUT = 2; # seconds
 
 // *** - ***
 
