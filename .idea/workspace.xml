@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93618615-cd51-4473-a7c8-bc2ca9ec4519" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI_components/controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI_components/pv_model.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CI_components/view.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solmax/start.php" beforeDir="false" afterPath="$PROJECT_DIR$/solmax/start.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,11 +22,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solmax/start.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="5" selection-start-column="5" selection-end-column="5" />
+            <state relative-caret-position="240">
+              <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
@@ -46,20 +43,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="147" column="55" lean-forward="true" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="150">
-                <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-              </first_editor>
-              <second_editor />
+            <state relative-caret-position="630">
+              <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
             </state>
           </provider>
         </entry>
@@ -94,9 +79,9 @@
       <list>
         <option value="$PROJECT_DIR$/solmax/config.php" />
         <option value="$PROJECT_DIR$/solmax/pv.php" />
-        <option value="$PROJECT_DIR$/solmax/start.php" />
-        <option value="$PROJECT_DIR$/solmax/SolarMax.php" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/solmax/SolarMax.php" />
+        <option value="$PROJECT_DIR$/solmax/start.php" />
       </list>
     </option>
   </component>
@@ -163,7 +148,7 @@
       <workItem from="1543745201561" duration="36000" />
       <workItem from="1543766164607" duration="1338000" />
       <workItem from="1543827159376" duration="18602000" />
-      <workItem from="1543914314764" duration="261000" />
+      <workItem from="1543914314764" duration="1172000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1543849400127</created>
@@ -291,11 +276,18 @@
       <option name="project" value="LOCAL" />
       <updated>1543852929442</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="refactor">
+      <created>1543915148008</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1543915148008</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22254000" />
+    <option name="totallyTimeSpent" value="23165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="45" y="25" width="1875" height="1175" extended-state="6" />
@@ -350,24 +342,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solmax/start.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solmax/config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="147" column="55" lean-forward="true" selection-start-line="147" selection-start-column="55" selection-end-line="147" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -378,6 +356,20 @@
             <caret line="10" column="1" lean-forward="true" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="630">
+          <caret line="110" lean-forward="true" selection-start-line="110" selection-end-line="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solmax/start.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
