@@ -107,6 +107,9 @@ class SolarMax {
 
 
         $this->handlerSolarMax = $this->connect($this->host,$this->port,$this->timeout);
+        if (!$this->handlerSolarMax){
+            echo "\nimpossibile comunicare con l'inverter\n\n";
+        }
 
 
     }
