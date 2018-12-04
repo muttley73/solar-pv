@@ -60,12 +60,12 @@ class SolarMax {
             "KLY" => ["name" => "Energy last year [kWh]", "value" => function($v) {return $this->convert($v);}],
             "KT0" => ["name" => "Energy total [kWh]", "value" => function($v) {return $this->convert($v);}],
             "LAN" => ["name" => "Language", "value" => function($v) {return $this->convert($v);}],
-            "UDC" => ["name" => "DC voltage [mV]", "value" => function($v) {return $this->convert($v) * 100;}],
-            "UL1" => ["name" => "AC voltage [mV]", "value" => function($v) {return $this->convert($v) * 100;}],
-            "IDC" => ["name" => "DC current [mA]", "value" => function($v) {return $this->convert($v) * 10;}],
-            "IL1" => ["name" => "AC current [mA]", "value" => function($v) {return $this->convert($v) * 10;}],
-            "PAC" => ["name" => "AC power [mW]", "value" => function($v) {return $this->convert($v)*500/1000;}],
-            "PIN" => ["name" => "Power installed [mW]", "value" => function($v) {return $this->convert($v) * 500;}],
+            "UDC" => ["name" => "DC voltage [mV]", "value" => function($v) {return $this->convert($v);}],
+            "UL1" => ["name" => "AC voltage [mV]", "value" => function($v) {return $this->convert($v);}],
+            "IDC" => ["name" => "DC current [mA]", "value" => function($v) {return $this->convert($v);}],
+            "IL1" => ["name" => "AC current [mA]", "value" => function($v) {return $this->convert($v);}],
+            "PAC" => ["name" => "AC power [mW]", "value" => function($v) {return $this->convert($v);}],
+            "PIN" => ["name" => "Power installed [mW]", "value" => function($v) {return $this->convert($v);}],
             "PRL" => ["name" => "AC power [%]", "value" => function($v) {return $this->convert($v);}],
             "CAC" => ["name" => "Start ups", "value" => function($v) {return $this->convert($v);}],
             "FRD" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
@@ -114,7 +114,11 @@ class SolarMax {
     public function generateReport(){
         $report = [];
         foreach ($this->queryList as $key => $item){
-            $report[]=$this->getMessage($key);
+            $r = $this->getsmparam($key);
+            if ($r === false){
+                continue;
+            }
+            $report[]=$this->getsmparam($key);
         }
 
         return $report;
@@ -161,9 +165,7 @@ class SolarMax {
         $V_MSG = fread($this->handlerSolarMax, 9);
 
         if (!preg_match("/([0-9A-F]{2});FB;([0-9A-F]{2})/", $V_MSG, $matches)) {
-            flush();
-            fclose($this->handlerSolarMax);
-            die("Invalid response from header");
+            return false;
         }
 
         if ($matches[1] != $this->device_addr) {
@@ -177,11 +179,11 @@ class SolarMax {
 
         #Logic required here to separately test OPSTATES and return that value
         if (!preg_match('/^\|64:(\w{3})=([0-9A-F]+)\|([0-9A-F]{4})}$/', $V_MSG, $matches)) {
-             $retval = "missing";
+             return false;
         }
 
         if (isset($matches[1]) && $matches[1] != $command) {
-            $retval = "missing";
+            return false;
         }
 
         $retval = !isset($retval) ? $this->queryList[$command]['value']($matches[2]):$retval;
