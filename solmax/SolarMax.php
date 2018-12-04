@@ -114,7 +114,7 @@ class SolarMax {
     public function generateReport(){
         $report = [];
         foreach ($this->queryList as $key => $item){
-            $report[]=$this->getMessage();
+            $report[]=$this->getMessage($key);
         }
 
         return $report;
