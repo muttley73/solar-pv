@@ -15,4 +15,4 @@ $TIMEOUT = 5; # seconds
 
 $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-var_dump($sm->generateReport());
+print_r($sm->generateReport());
