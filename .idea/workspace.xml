@@ -4,7 +4,6 @@
     <list default="true" id="93618615-cd51-4473-a7c8-bc2ca9ec4519" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/solmax/SolarMax.php" beforeDir="false" afterPath="$PROJECT_DIR$/solmax/SolarMax.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solmax/start.php" beforeDir="false" afterPath="$PROJECT_DIR$/solmax/start.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +22,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solmax/start.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
@@ -41,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="424">
-              <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
+            <state relative-caret-position="587">
+              <caret line="196" column="28" selection-start-line="196" selection-start-column="28" selection-end-line="196" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -66,11 +65,13 @@
       <find>convert()</find>
       <find>invali</find>
       <find>$OPMODES</find>
+      <find>],</find>
     </findStrings>
     <replaceStrings>
       <replace>;</replace>
       <replace>]</replace>
       <replace>convert($v)</replace>
+      <replace>,</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -82,8 +83,8 @@
         <option value="$PROJECT_DIR$/solmax/config.php" />
         <option value="$PROJECT_DIR$/solmax/pv.php" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/solmax/SolarMax.php" />
         <option value="$PROJECT_DIR$/solmax/start.php" />
+        <option value="$PROJECT_DIR$/solmax/SolarMax.php" />
       </list>
     </option>
   </component>
@@ -150,7 +151,7 @@
       <workItem from="1543745201561" duration="36000" />
       <workItem from="1543766164607" duration="1338000" />
       <workItem from="1543827159376" duration="18602000" />
-      <workItem from="1543914314764" duration="4515000" />
+      <workItem from="1543914314764" duration="5362000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1543849400127</created>
@@ -306,11 +307,25 @@
       <option name="project" value="LOCAL" />
       <updated>1543917386679</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="refactor">
+      <created>1543918838181</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1543918838181</updated>
+    </task>
+    <task id="LOCAL-00024" summary="refactor">
+      <created>1543919584057</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1543919584057</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26508000" />
+    <option name="totallyTimeSpent" value="27355000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="171" y="58" width="1684" height="1068" extended-state="0" />
@@ -378,13 +393,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="55" column="51" selection-start-line="55" selection-start-column="51" selection-end-line="55" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/solmax/pv.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -403,6 +411,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="196" column="28" selection-start-line="196" selection-start-column="28" selection-end-line="196" selection-end-column="28" />
         </state>
       </provider>
     </entry>

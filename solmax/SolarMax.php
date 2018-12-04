@@ -194,7 +194,7 @@ class SolarMax {
         }
 
         $retval = !isset($retval) ? $this->queryList[$command]['value']($matches[2]):$retval;
-        return [$this->queryList[$command]["name"], "value" => $retval];
+        return ['description'=>$this->queryList[$command]["name"], "value" => $retval];
     }
 
     private function connect($host, $port, $timeout = 3) {
