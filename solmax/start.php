@@ -5,14 +5,30 @@
  * Date: 03/12/18
  * Time: 15.03
  */
-include('config.php');
+
 include('SolarMax.php');
+
+// *** config ***
+$lat = 39.1501857; #Latitude (+ to N)
+$lng = 8.9848062; #Longitude (+ to E)
 
 $ADDR = "10.0.0.123";
 $PORT = "12345";
 $DEVICE_ADDR = "5";
 $TIMEOUT = 5; # seconds
 
+// *** - ***
+
+$sunrise = new DateTime();
+$sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 95));
+echo "alba: " . $sunrise->format("H:m:s") . "\n";
+
+$sunset = new DateTime();
+$sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 95));
+echo "tramonto: " . $sunset->format("H:m:s") . "\n";
+
+
+
 $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-print_r($sm->generateReport());
+print_r(json_encode($sm->generateReport()));
