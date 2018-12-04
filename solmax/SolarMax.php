@@ -75,7 +75,7 @@ class SolarMax {
             "SPR" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             "TKK" => ["name" => "Temerature Heat Sink", "value" => function($v) {return $this->convert($v);}],
             "TNF" => ["name" => "AC Frequency", "value" => function($v) {return $this->convert($v) / 100;}],
-            "SYS" => ["name" => "Operation State", "value" => function($v) {return $this->convert($v);}],
+            "SYS" => ["name" => "Operation State", "value" => function($v) {return $this->operationState($this->convert($v));}],
             "BDN" => ["name" => "Build number", "value" => function($v) {return $this->convert($v);}],
             "EC00" => ["name" => "EC00", "value" => function($v) {return $this->convert($v);}],
             "EC01" => ["name" => "EC01", "value" => function($v) {return $this->convert($v);}],
@@ -94,15 +94,15 @@ class SolarMax {
         # For next 'release'...
         # Literal translation from German to English
         $this->OPMODES = [
-            ['mode' => '20001,0', 'desc' => '20001,0'],
-            ['mode' => '20002,0', 'desc' => 'Insufficient exposure'],
-            ['mode' => '20003,0', 'desc' => 'Approach'],
-            ['mode' => '20004,0', 'desc' => 'MPP operation'],
-            ['mode' => '20005,0', 'desc' => '20005,0'],
-            ['mode' => '20006,0', 'desc' => '20006,0'],
-            ['mode' => '20007,0', 'desc' => '20007,0'],
-            ['mode' => '20008,0', 'desc' => 'Network operation'],
-            ['mode' => '20009,0', 'desc' => '20009,0']
+             '20001,0' => 'codice sconosciuto',
+             '20002,0' => 'Insufficient exposure',
+             '20003,0' => 'Approach',
+             '20004,0' => 'MPP operation',
+             '20005,0' => 'codice sconosciuto',
+             '20006,0' => 'codice sconosciuto',
+             '20007,0' => 'codice sconosciuto',
+             '20008,0' => 'Network operation',
+             '20009,0' => 'codice sconosciuto'
         ];
 
 
@@ -111,6 +111,13 @@ class SolarMax {
 
     }
 
+    function operationState ($code){
+        if (key_exists($code,$this->OPMODES)){
+            return $this->OPMODES[$code];
+        }
+    }
+
+
     public function generateReport(){
         $report = [];
         foreach ($this->queryList as $key => $item){
@@ -118,7 +125,7 @@ class SolarMax {
             if ($r === false){
                 continue;
             }
-            $report[]=$this->getsmparam($key);
+            $report[$key]=$this->getsmparam($key);
         }
 
         return $report;
