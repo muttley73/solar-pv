@@ -177,18 +177,14 @@ class SolarMax {
 
         #Logic required here to separately test OPSTATES and return that value
         if (!preg_match('/^\|64:(\w{3})=([0-9A-F]+)\|([0-9A-F]{4})}$/', $V_MSG, $matches)) {
-            flush();
-            fclose($this->handlerSolarMax);
-            die("invalid response");
+             $retval = "missing";
         }
 
-        if ($matches[1] != $command) {
-            flush();
-            fclose($this->handlerSolarMax);
-            die("wrong response");
+        if (isset($matches[1]) && $matches[1] != $command) {
+            $retval = "missing";
         }
 
-        $retval = $this->queryList[$command]['value']($matches[2]);
+        $retval = !isset($retval) ? $this->queryList[$command]['value']($matches[2]):$retval;
         return [$this->queryList[$command]["name"], "value" => $retval];
     }
 
