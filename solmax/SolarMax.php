@@ -204,11 +204,16 @@ class SolarMax {
     }
 
     private function connect($host, $port, $timeout = 3) {
-        $fsock = fsockopen($host, $port, $errno, $errstr, $timeout);
-        if (!$fsock) {
-            return 0;
-        } else {
-            return $fsock;
+        try {
+            $fsock = fsockopen($host, $port, $errno, $errstr, $timeout);
+            if (!$fsock) {
+                return 0;
+            } else {
+                return $fsock;
+            }
+        }catch(Exception $e){
+            echo "\nimpossibile comunicare con l'inverter\n\n";
+            die();
         }
     }
 
