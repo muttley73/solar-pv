@@ -111,6 +111,16 @@ class SolarMax {
 
     }
 
+    public function generateReport(){
+        $report = [];
+        foreach ($this->queryList as $key => $item){
+            $report[]=$this->getMessage();
+        }
+
+        return $report;
+
+    }
+
     public function getMessage($command){
         return $this->getsmparam($command);
 
