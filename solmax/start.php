@@ -19,6 +19,8 @@ $TIMEOUT = 2; # seconds
 
 // *** - ***
 
+while(true){
+
 $sunrise = new DateTime();
 $sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 95));
 #echo "alba: " . $sunrise->format("H:m:s") . "\n";
@@ -32,19 +34,20 @@ $sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 95
 $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
 $f = $sm->generateReport();
-print_r($f);
-
+//print_r($f);
+unset($m);
 
 if (!empty($f)){
   $feed['status'] = 'on line';
   foreach ($f as $key => $value){
+        //echo "- ".$value['description']."\n";
 	$feed[$value['description']]=$value['value'];
   }
-
+  file_put_contents('feeds.json', json_encode($feed));
+  sleep(5);
+}else{
+	sleep(10);
 }
-
-file_put_contents('feeds.json', json_encode($feed));
-
-print_r($feed);
-
+//print_r($feed);
+}
 
