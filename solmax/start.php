@@ -9,8 +9,8 @@
 include('SolarMax.php');
 
 // *** config ***
-#$lat = 39.1501857; #Latitude (+ to N)
-#$lng = 8.9848062; #Longitude (+ to E)
+$lat = 39.1501857; #Latitude (+ to N)
+$lng = 8.9848062; #Longitude (+ to E)
 
 $ADDR = "10.0.0.123";
 $PORT = "12345";
