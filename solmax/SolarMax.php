@@ -14,13 +14,13 @@ class SolarMax {
     public $queryList;
     private $OPMODES;
     private $handlerSolarMax;
-    private $host,$port,$timeout,$device_addr;
+    private $host, $port, $timeout, $device_addr;
 
     private function convert($value) {
         return hexdec($value);
     }
 
-    public function __construct($host,$port,$deviceAddr,$timeout) {
+    public function __construct($host, $port, $deviceAddr, $timeout) {
 
         $this->host = $host;
         $this->port = $port;
@@ -53,23 +53,55 @@ class SolarMax {
             "E3h" => ["name" => "???Error 3, hour???", "value" => function($v) {return $this->convert($v);}],
             "E3m" => ["name" => "???Error 3, minute???", "value" => function($v) {return $this->convert($v);}],
             */
-            "KHR" => ["name" => "operating_hours", "value" => function($v) {return $this->convert($v);}],
-            "KDY" => ["name" => "energy_today_wh", "value" => function($v) {return $this->convert($v)*100;}],
-            "KLD" => ["name" => "energy_yesterday_Wh", "value" => function($v) {return $this->convert($v)*100;}],
-            "KMT" => ["name" => "energy_this_month_kWh", "value" => function($v) {return $this->convert($v);}],
-            "KLM" => ["name" => "energy_last_monh_kWh", "value" => function($v) {return $this->convert($v);}],
-            "KYR" => ["name" => "energy_this_year_kWh", "value" => function($v) {return $this->convert($v);}],
-            "KLY" => ["name" => "energy_last_year_kWh", "value" => function($v) {return $this->convert($v);}],
-            "KT0" => ["name" => "energy_total_[kWh]", "value" => function($v) {return $this->convert($v);}],
+            "KHR" => ["name" => "operating_hours", "value" => function ($v) {
+                return $this->convert($v);
+            }],
+            "KDY" => ["name" => "energy_today_wh", "value" => function ($v) {
+                return $this->convert($v) * 100;
+            }],
+            "KLD" => ["name" => "energy_yesterday_Wh", "value" => function ($v) {
+                return $this->convert($v) * 100;
+            }],
+            "KMT" => ["name" => "energy_this_month_kWh", "value" => function ($v) {
+                return $this->convert($v);
+            }],
+            "KLM" => ["name" => "energy_last_monh_kWh", "value" => function ($v) {
+                return $this->convert($v);
+            }],
+            "KYR" => ["name" => "energy_this_year_kWh", "value" => function ($v) {
+                return $this->convert($v);
+            }],
+            "KLY" => ["name" => "energy_last_year_kWh", "value" => function ($v) {
+                return $this->convert($v);
+            }],
+            "KT0" => ["name" => "energy_total_[kWh]", "value" => function ($v) {
+                return $this->convert($v);
+            }],
             //"LAN" => ["name" => "Language", "value" => function($v) {return $this->convert($v);}],
-            "UDC" => ["name" => "DC_voltage_mV", "value" => function($v) {return $this->convert($v)*100;}],
-            "UL1" => ["name" => "AC_voltage_mV", "value" => function($v) {return $this->convert($v)*100;}],
-            "IDC" => ["name" => "DC_current_mA", "value" => function($v) {return $this->convert($v)*10;}],
-            "IL1" => ["name" => "AC_current_mA", "value" => function($v) {return $this->convert($v)*10;}],
-            "PAC" => ["name" => "AC_power_Wh", "value" => function($v) {return $this->convert($v)*500/1000;}],
-            "PIN" => ["name" => "power_installed_mw", "value" => function($v) {return $this->convert($v)*500/1000;}],
-            "PRL" => ["name" => "ac_power_p", "value" => function($v) {return $this->convert($v);}],
-            "CAC" => ["name" => "start_ups", "value" => function($v) {return $this->convert($v);}],
+            "UDC" => ["name" => "DC_voltage_mV", "value" => function ($v) {
+                return $this->convert($v) * 100;
+            }],
+            "UL1" => ["name" => "AC_voltage_mV", "value" => function ($v) {
+                return $this->convert($v) * 100;
+            }],
+            "IDC" => ["name" => "DC_current_mA", "value" => function ($v) {
+                return $this->convert($v) * 10;
+            }],
+            "IL1" => ["name" => "AC_current_mA", "value" => function ($v) {
+                return $this->convert($v) * 10;
+            }],
+            "PAC" => ["name" => "AC_power_Wh", "value" => function ($v) {
+                return $this->convert($v) * 500 / 1000;
+            }],
+            "PIN" => ["name" => "power_installed_mw", "value" => function ($v) {
+                return $this->convert($v) * 500 / 1000;
+            }],
+            "PRL" => ["name" => "ac_power_p", "value" => function ($v) {
+                return $this->convert($v);
+            }],
+            "CAC" => ["name" => "start_ups", "value" => function ($v) {
+                return $this->convert($v);
+            }],
             /*
             "FRD" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             "SCD" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
@@ -77,9 +109,15 @@ class SolarMax {
             "SE2" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             "SPR" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             */
-            "TKK" => ["name" => "temerature_heat_sink_c", "value" => function($v) {return $this->convert($v);}],
-            "TNF" => ["name" => "ac_frequency", "value" => function($v) {return $this->convert($v) / 100;}],
-            "SYS" => ["name" => "operation_state", "value" => function($v) {return $this->operationState($this->convert($v));}],
+            "TKK" => ["name" => "temerature_heat_sink_c", "value" => function ($v) {
+                return $this->convert($v);
+            }],
+            "TNF" => ["name" => "ac_frequency", "value" => function ($v) {
+                return $this->convert($v) / 100;
+            }],
+            "SYS" => ["name" => "operation_state", "value" => function ($v) {
+                return $this->operationState($this->convert($v));
+            }],
             /*
             "BDN" => ["name" => "Build number", "value" => function($v) {return $this->convert($v);}],
             "EC00" => ["name" => "EC00", "value" => function($v) {return $this->convert($v);}],
@@ -99,54 +137,56 @@ class SolarMax {
         # For next 'release'...
         # Literal translation from German to English
         $this->OPMODES = [
-             '20001,0' => 'codice sconosciuto',
-             '20002,0' => 'Insufficient exposure',
-             '20003,0' => 'Approach',
-             '20004,0' => 'MPP operation',
-             '20005,0' => 'codice sconosciuto',
-             '20006,0' => 'codice sconosciuto',
-             '20007,0' => 'codice sconosciuto',
-             '20008,0' => 'Network operation',
-             '20009,0' => 'codice sconosciuto'
+            '20001,0' => 'codice sconosciuto',
+            '20002,0' => 'Insufficient exposure',
+            '20003,0' => 'Approach',
+            '20004,0' => 'MPP operation',
+            '20005,0' => 'codice sconosciuto',
+            '20006,0' => 'codice sconosciuto',
+            '20007,0' => 'codice sconosciuto',
+            '20008,0' => 'Network operation',
+            '20009,0' => 'codice sconosciuto'
         ];
 
 
-        $this->handlerSolarMax = $this->connect($this->host,$this->port,$this->timeout);
-        if (!$this->handlerSolarMax){
+        //$this->handlerSolarMax = $this->connect($this->host, $this->port, $this->timeout);
+        /*
+        if (!$this->handlerSolarMax) {
             echo "\nimpossibile comunicare con l'inverter\n\n";
             die();
         }
-
+        */
 
     }
 
-    function operationState ($code){
-        if (key_exists($code,$this->OPMODES)){
+
+    function operationState($code) {
+        if (key_exists($code, $this->OPMODES)) {
             return $this->OPMODES[$code];
         }
     }
 
 
-    public function generateReport(){
+    public function generateReport() {
         $report = [];
-        foreach ($this->queryList as $key => $item){
+        foreach ($this->queryList as $key => $item) {
             $r = $this->getsmparam($key);
-            if ($r === false){
+            if ($r === false) {
                 continue;
             }
-            $report[$key]=$this->getsmparam($key);
+            $report[$key] = $this->getsmparam($key);
         }
 
         return $report;
 
     }
 
-    public function getMessage($command){
+    public function getMessage($command) {
         return $this->getsmparam($command);
 
     }
 
-    function getConnection(){
+    function getConnection() {
         return $this->handlerSolarMax;
     }
 
@@ -198,26 +238,35 @@ class SolarMax {
 
         #Logic required here to separately test OPSTATES and return that value
         if (!preg_match('/^\|64:(\w{3})=([0-9A-F]+)\|([0-9A-F]{4})}$/', $V_MSG, $matches)) {
-             return false;
+            return false;
         }
 
         if (isset($matches[1]) && $matches[1] != $command) {
             return false;
         }
 
-        $retval = !isset($retval) ? $this->queryList[$command]['value']($matches[2]):$retval;
-        return ['description'=>$this->queryList[$command]["name"], "value" => $retval];
+        $retval = !isset($retval) ? $this->queryList[$command]['value']($matches[2]) : $retval;
+        return ['description' => $this->queryList[$command]["name"], "value" => $retval];
     }
 
-    private function connect($host, $port, $timeout = 3) {
+    function close_connect() {
         try {
-            $fsock = fsockopen($host, $port, $errno, $errstr, $timeout);
+            socket_close($this->handlerSolarMax);
+        } catch (Exception $e) {
+            echo "\nerrore durante la chiusura della socket\n\n";
+            die();
+        }
+    }
+
+    function connect($timeout = 3) {
+        try {
+            $fsock = fsockopen($this->host, $this->port, $errno, $errstr, $timeout);
             if (!$fsock) {
                 return 0;
             } else {
-                return $fsock;
+                $this->handlerSolarMax = $fsock;
             }
-        }catch(Exception $e){
+        } catch (Exception $e) {
             echo "\nimpossibile comunicare con l'inverter\n\n";
             die();
         }
