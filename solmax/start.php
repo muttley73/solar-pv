@@ -33,7 +33,7 @@ $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
 $f = $sm->generateReport();
 print_r($f);
-//echo $f['PAC']['value'];
+
 
 if (!empty($f)){
   $feed['status'] = 'on line';

@@ -28,6 +28,7 @@ class SolarMax {
         $this->timeout = $timeout;
 
         $this->queryList = [
+            /*
             "ADR" => ["name" => "Address", "value" => function($v) {return $this->convert($v);} ],
             "TYP" => ["name" => "Type", "value" => function($v) { return "0x" . $this->convert($v);}],
             "SWV" => ["name" => "Software version", "value" => function($v) {sprintf("%1.1f", $this->convert($v) / 10);}],
@@ -35,7 +36,7 @@ class SolarMax {
             "DMT" => ["name" => "Date month", "value" => function($v) {return $this->convert($v);}],
             "DYR" => ["name" => "Date year", "value" => function($v) {return $this->convert($v);}],
             "THR" => ["name" => "Time hours", "value" => function($v) {return $this->convert($v);}],
-            "TMI" => ["name" => "Time minutes", "value" => function($v) {return $this->convert($v);}],
+            "TMI" => ["name" => "Time minutes", "value" => function($v) {return $this->convert($v);}],            
             "E11" => ["name" => "???Error 1, number???", "value" => function($v) {return $this->convert($v);}],
             "E1D" => ["name" => "???Error 1, day???", "value" => function($v) {return $this->convert($v);}],
             "E1M" => ["name" => "???Error 1, month???", "value" => function($v) {return $this->convert($v);}],
@@ -51,31 +52,35 @@ class SolarMax {
             "E3M" => ["name" => "???Error 3, month???", "value" => function($v) {return $this->convert($v);}],
             "E3h" => ["name" => "???Error 3, hour???", "value" => function($v) {return $this->convert($v);}],
             "E3m" => ["name" => "???Error 3, minute???", "value" => function($v) {return $this->convert($v);}],
-            "KHR" => ["name" => "Operating hours", "value" => function($v) {return $this->convert($v);}],
-            "KDY" => ["name" => "Energy today [Wh]", "value" => function($v) {return $this->convert($v)*100;}],
-            "KLD" => ["name" => "Energy yesterday [Wh]", "value" => function($v) {return $this->convert($v)*100;}],
-            "KMT" => ["name" => "Energy this month [kWh]", "value" => function($v) {return $this->convert($v);}],
-            "KLM" => ["name" => "Energy last monh [kWh]", "value" => function($v) {return $this->convert($v);}],
-            "KYR" => ["name" => "Energy this year [kWh]", "value" => function($v) {return $this->convert($v);}],
-            "KLY" => ["name" => "Energy last year [kWh]", "value" => function($v) {return $this->convert($v);}],
-            "KT0" => ["name" => "Energy total [kWh]", "value" => function($v) {return $this->convert($v);}],
-            "LAN" => ["name" => "Language", "value" => function($v) {return $this->convert($v);}],
-            "UDC" => ["name" => "DC voltage [mV]", "value" => function($v) {return $this->convert($v)*100;}],
-            "UL1" => ["name" => "AC voltage [mV]", "value" => function($v) {return $this->convert($v)*100;}],
-            "IDC" => ["name" => "DC current [mA]", "value" => function($v) {return $this->convert($v)*10;}],
-            "IL1" => ["name" => "AC current [mA]", "value" => function($v) {return $this->convert($v)*10;}],
-            "PAC" => ["name" => "AC power [Wh]", "value" => function($v) {return $this->convert($v)*500/1000;}],
-            "PIN" => ["name" => "Power installed [mW]", "value" => function($v) {return $this->convert($v)*500/1000;}],
-            "PRL" => ["name" => "AC power [%]", "value" => function($v) {return $this->convert($v);}],
-            "CAC" => ["name" => "Start ups", "value" => function($v) {return $this->convert($v);}],
+            */
+            "KHR" => ["name" => "operating_hours", "value" => function($v) {return $this->convert($v);}],
+            "KDY" => ["name" => "energy_today_wh", "value" => function($v) {return $this->convert($v)*100;}],
+            "KLD" => ["name" => "energy_yesterday_Wh", "value" => function($v) {return $this->convert($v)*100;}],
+            "KMT" => ["name" => "energy_this_month_kWh", "value" => function($v) {return $this->convert($v);}],
+            "KLM" => ["name" => "energy_last_monh_kWh", "value" => function($v) {return $this->convert($v);}],
+            "KYR" => ["name" => "energy_this_year_kWh", "value" => function($v) {return $this->convert($v);}],
+            "KLY" => ["name" => "energy_last_year_kWh", "value" => function($v) {return $this->convert($v);}],
+            "KT0" => ["name" => "energy_total_[kWh]", "value" => function($v) {return $this->convert($v);}],
+            //"LAN" => ["name" => "Language", "value" => function($v) {return $this->convert($v);}],
+            "UDC" => ["name" => "DC_voltage_mV", "value" => function($v) {return $this->convert($v)*100;}],
+            "UL1" => ["name" => "AC_voltage_mV", "value" => function($v) {return $this->convert($v)*100;}],
+            "IDC" => ["name" => "DC_current_mA", "value" => function($v) {return $this->convert($v)*10;}],
+            "IL1" => ["name" => "AC_current_mA", "value" => function($v) {return $this->convert($v)*10;}],
+            "PAC" => ["name" => "AC_power_Wh", "value" => function($v) {return $this->convert($v)*500/1000;}],
+            "PIN" => ["name" => "power_installed_mw", "value" => function($v) {return $this->convert($v)*500/1000;}],
+            "PRL" => ["name" => "ac_power_p", "value" => function($v) {return $this->convert($v);}],
+            "CAC" => ["name" => "start_ups", "value" => function($v) {return $this->convert($v);}],
+            /*
             "FRD" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             "SCD" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             "SE1" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             "SE2" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
             "SPR" => ["name" => "???", "value" => function($v) {return $this->convert($v);}],
-            "TKK" => ["name" => "Temerature Heat Sink", "value" => function($v) {return $this->convert($v);}],
-            "TNF" => ["name" => "AC Frequency", "value" => function($v) {return $this->convert($v) / 100;}],
-            "SYS" => ["name" => "Operation State", "value" => function($v) {return $this->operationState($this->convert($v));}],
+            */
+            "TKK" => ["name" => "temerature_heat_sink_c", "value" => function($v) {return $this->convert($v);}],
+            "TNF" => ["name" => "ac_frequency", "value" => function($v) {return $this->convert($v) / 100;}],
+            "SYS" => ["name" => "operation_state", "value" => function($v) {return $this->operationState($this->convert($v));}],
+            /*
             "BDN" => ["name" => "Build number", "value" => function($v) {return $this->convert($v);}],
             "EC00" => ["name" => "EC00", "value" => function($v) {return $this->convert($v);}],
             "EC01" => ["name" => "EC01", "value" => function($v) {return $this->convert($v);}],
@@ -86,7 +91,7 @@ class SolarMax {
             "EC06" => ["name" => "EC06", "value" => function($v) {return $this->convert($v);}],
             "EC07" => ["name" => "EC07", "value" => function($v) {return $this->convert($v);}],
             "EC08" => ["name" => "EC08", "value" => function($v) {return $this->convert($v);}],
-
+            */
         ];
 
 
