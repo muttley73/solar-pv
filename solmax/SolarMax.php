@@ -251,7 +251,7 @@ class SolarMax {
 
     function close_connect() {
         try {
-            socket_close($this->handlerSolarMax);
+            fclose($this->handlerSolarMax);
         } catch (Exception $e) {
             echo "\nerrore durante la chiusura della socket\n\n";
             die();
