@@ -52,7 +52,7 @@ if ($status == 'on line') {
         echo "[ok]";
     }else{
         echo "[failure]";
-        $status = 'off line';
+        $f = resetSensor();
     }
 
     echo "\nwrite feeds ........ ";
@@ -92,4 +92,18 @@ function getFeedsArray($inputFile) {
         return false;
     }
 }
+function resetSensor(){
+    $template = '{
+  "status": "off line",
+  "DC_voltage_mV": 0,
+  "AC_voltage_mV": 0,
+  "DC_current_mA": 0,
+  "AC_current_mA": 0,
+  "AC_power_Wh": 0,  
+  "ac_power_p": 0,    
+  "ac_frequency": 0
+}';
+    return  json_decode($template,true);
 
+
+}
