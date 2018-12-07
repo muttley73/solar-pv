@@ -44,17 +44,17 @@ if ($status == 'on line') {
     echo "\nconnecting  ........ ";
     if ($sm->connect()){
         echo "[connected]";
+        echo "\nretrieve data ...... ";
+        $f = $sm->generateReport();
+        echo empty($f) ? "[failure]" : "[ok]";
+        echo "\nclose connection ... ";
+        $sm->close_connect();
+        echo "[ok]";
     }else{
         echo "[failure]";
         $status = 'off line';
     }
 
-    echo "\nretrieve data ...... ";
-    $f = $sm->generateReport();
-    echo empty($f) ? "[failure]" : "[ok]";
-    echo "\nclose connection ... ";
-    $sm->close_connect();
-    echo "[ok]";
     echo "\nwrite feeds ........ ";
 
 }

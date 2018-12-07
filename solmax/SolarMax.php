@@ -217,8 +217,7 @@ class SolarMax {
         $V_MSG = $this->mkmsg($this->device_addr, $command);
         $V_RV = fwrite($this->handlerSolarMax, $V_MSG);
         if (!$V_RV) {
-            var_dump($this->handlerSolarMax);
-            die("Write error ");
+            return false;
         }
         # Reading first 9 bytes
         $V_MSG = fread($this->handlerSolarMax, 9);
