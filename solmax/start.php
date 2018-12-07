@@ -20,16 +20,16 @@ $outputJsonFeeds = '/home/muttley/solar-pv/solmax/feeds.json';
 
 $sunrise = new DateTime();
 $sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
-echo "alba: " . $sunrise->format("H:i:s") . "\n";
+echo  "\n\nalba: ..............: " . $sunrise->format("H:i:s");
 
 $sunset = new DateTime();
 $sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
-echo "tramonto: " . $sunset->format("H:i:s") . "\n";
+echo  "\ntramonto alle .......: " . $sunset->format("H:i:s");
 
 $now = new DateTime();
 if ($now->getTimestamp() > $sunrise->getTimestamp() && $now->getTimestamp() < $sunset->getTimestamp()) {
     $timeToSunSet = $sunset->getTimestamp() - $now->getTimestamp();
-    echo "\ntramonto fra... $timeToSunSet secondi\n\n";
+    echo "\ntramonto fra $timeToSunSet secondi\n";
     $status = 'on line';
 } else {
     $status = 'off line';
@@ -40,15 +40,15 @@ $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
 //while (true) {
 
-    echo "\nconnecting to SolarMax ... ";
+    echo "\nconnecting  ........ ";
     echo $sm->connect() ? "[connected]" : "[failure]";
-    echo "\nretrieve data ... ";
+    echo "\nretrieve data ...... ";
     $f = $sm->generateReport();
     echo empty($f) ? "[failure]" : "[ok]";
     echo "\nclose connection ... ";
     $sm->close_connect();
     echo "[ok]";
-    echo "\nwrite feeds ... ";
+    echo "\nwrite feeds ........ ";
     if (file_exists($outputJsonFeeds)) {
         $arrayFeeds = getFeedsArray($outputJsonFeeds);
     } else {
