@@ -262,13 +262,12 @@ class SolarMax {
         try {
             $fsock = fsockopen($this->host, $this->port, $errno, $errstr, $timeout);
             if (!$fsock) {
-                return 0;
-            } else {
-                $this->handlerSolarMax = $fsock;
+                return false;
             }
+            $this->handlerSolarMax = $fsock;
+            return true;
         } catch (Exception $e) {
-            echo "\nimpossibile comunicare con l'inverter\n\n";
-            die();
+            return false;
         }
     }
 

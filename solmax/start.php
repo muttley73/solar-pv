@@ -16,39 +16,68 @@ $ADDR = "10.0.0.123";
 $PORT = "12345";
 $DEVICE_ADDR = "5";
 $TIMEOUT = 2; # seconds
+$outputJsonFeeds = '/home/muttley/solar-pv/solmax/feeds.json';
+
+$sunrise = new DateTime();
+$sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
+echo "alba: " . $sunrise->format("H:i:s") . "\n";
+
+$sunset = new DateTime();
+$sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
+echo "tramonto: " . $sunset->format("H:i:s") . "\n";
+
+$now = new DateTime();
+if ($now->getTimestamp() > $sunrise->getTimestamp() && $now->getTimestamp() < $sunset->getTimestamp()) {
+    $timeToSunSet = $sunset->getTimestamp() - $now->getTimestamp();
+    echo "\ntramonto fra... $timeToSunSet secondi\n\n";
+    $status = 'on line';
+} else {
+    $status = 'off line';
+}
 
 // *** - ***
 $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-while (true) {
+//while (true) {
 
-    $sunrise = new DateTime();
-    $sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 95));
-#echo "alba: " . $sunrise->format("H:m:s") . "\n";
-
-    $sunset = new DateTime();
-    $sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 95));
-#echo "tramonto: " . $sunset->format("H:m:s") . "\n";
-
-    $sm->connect();
+    echo "\nconnecting to SolarMax ... ";
+    echo $sm->connect() ? "[connected]" : "[failure]";
+    echo "\nretrieve data ... ";
     $f = $sm->generateReport();
+    echo empty($f) ? "[failure]" : "[ok]";
+    echo "\nclose connection ... ";
     $sm->close_connect();
-//print_r($f);
-
-    if (!empty($f)) {
-        $feed['status'] = 'on line';
-        foreach ($f as $key => $value) {
-            //echo "- ".$value['description']."\n";
-            $feed[$value['description']] = $value['value'];
-        }
-        file_put_contents('feeds.json', json_encode($feed));
-        sleep(5);
+    echo "[ok]";
+    echo "\nwrite feeds ... ";
+    if (file_exists($outputJsonFeeds)) {
+        $arrayFeeds = getFeedsArray($outputJsonFeeds);
     } else {
-        sleep(10);
+        $arrayFeeds = [];
     }
 
+    $arrayFeeds['status'] = $status;
 
+    foreach ($f as $key => $item) {
+        $arrayFeeds[$item['description']] = $item['value'];
+    }
 
-//print_r($feed);
+    echo file_put_contents('feeds.json', json_encode($arrayFeeds)) ? "[ok]":"[failure]";
+    //sleep(5);
+
+//}
+
+echo "\n\n";
+die();
+
+// ****** function *******
+
+function getFeedsArray($inputFile) {
+    try {
+        $jsonFeeds = file_get_contents($inputFile);
+        $arrayFeeds = json_decode($jsonFeeds, true);
+        return is_array($arrayFeeds) ? $arrayFeeds : false;
+    } catch (Exception $e) {
+        return false;
+    }
 }
 
