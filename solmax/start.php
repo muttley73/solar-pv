@@ -20,7 +20,7 @@ $outputJsonFeeds = '/home/muttley/solar-pv/solmax/feeds.json';
 
 $sunrise = new DateTime();
 $sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
-echo  "\n\nalba: ..............: " . $sunrise->format("H:i:s");
+echo  "\n\nalba: ...............: " . $sunrise->format("H:i:s");
 
 $sunset = new DateTime();
 $sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
@@ -61,7 +61,7 @@ $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
         $arrayFeeds[$item['description']] = $item['value'];
     }
 
-    echo file_put_contents('feeds.json', json_encode($arrayFeeds)) ? "[ok]":"[failure]";
+    echo file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]":"[failure]";
     //sleep(5);
 
 //}
