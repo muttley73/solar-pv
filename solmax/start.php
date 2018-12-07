@@ -20,11 +20,11 @@ $outputJsonFeeds = '/home/muttley/solar-pv/solmax/feeds.json';
 
 $sunrise = new DateTime();
 $sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
-echo  "\n\nalba: ...............: " . $sunrise->format("H:i:s");
+echo "\n\nalba: ...............: " . $sunrise->format("H:i:s");
 
 $sunset = new DateTime();
 $sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
-echo  "\ntramonto alle .......: " . $sunset->format("H:i:s");
+echo "\ntramonto alle .......: " . $sunset->format("H:i:s");
 
 $now = new DateTime();
 if ($now->getTimestamp() > $sunrise->getTimestamp() && $now->getTimestamp() < $sunset->getTimestamp()) {
@@ -35,8 +35,11 @@ if ($now->getTimestamp() > $sunrise->getTimestamp() && $now->getTimestamp() < $s
     $status = 'off line';
 }
 
+
+$f = [];
+if ($status == 'on line') {
 // *** - ***
-$sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
+    $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
 //while (true) {
 
@@ -49,24 +52,28 @@ $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
     $sm->close_connect();
     echo "[ok]";
     echo "\nwrite feeds ........ ";
-    if (file_exists($outputJsonFeeds)) {
-        $arrayFeeds = getFeedsArray($outputJsonFeeds);
-    } else {
-        $arrayFeeds = [];
-    }
+}
 
-    $arrayFeeds['status'] = $status;
+if (file_exists($outputJsonFeeds)) {
+    $arrayFeeds = getFeedsArray($outputJsonFeeds);
+} else {
+    $arrayFeeds = [];
+}
 
-    foreach ($f as $key => $item) {
-        $arrayFeeds[$item['description']] = $item['value'];
-    }
+$arrayFeeds['status'] = $status;
 
-    echo file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]":"[failure]";
-    //sleep(5);
+foreach ($f as $key => $item) {
+    $arrayFeeds[$item['description']] = $item['value'];
+}
+
+echo file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]" : "[failure]";
+//sleep(5);
 
 //}
 
 echo "\n\n";
+
+
 die();
 
 // ****** function *******
