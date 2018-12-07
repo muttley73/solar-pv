@@ -41,10 +41,14 @@ if ($status == 'on line') {
 // *** - ***
     $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-//while (true) {
-
     echo "\nconnecting  ........ ";
-    echo $sm->connect() ? "[connected]" : "[failure]";
+    if ($sm->connect()){
+        echo "[connected]";
+    }else{
+        echo "[failure]";
+        $status = 'off line';
+    }
+
     echo "\nretrieve data ...... ";
     $f = $sm->generateReport();
     echo empty($f) ? "[failure]" : "[ok]";
@@ -52,6 +56,7 @@ if ($status == 'on line') {
     $sm->close_connect();
     echo "[ok]";
     echo "\nwrite feeds ........ ";
+
 }
 
 if (file_exists($outputJsonFeeds)) {
