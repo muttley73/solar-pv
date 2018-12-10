@@ -23,7 +23,7 @@ if (file_exists($pidFile)) {
     die();
 }
 
-if (!file_put_contents($pidFile, null)) {
+if (!file_put_contents($pidFile, '1')) {
     echo "\nnon riesco a creare il file $pidFile\n\n";
     die();
 }
