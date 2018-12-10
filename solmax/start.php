@@ -17,69 +17,82 @@ $PORT = "12345";
 $DEVICE_ADDR = "5";
 $TIMEOUT = 2; # seconds
 $outputJsonFeeds = '/home/muttley/solar-pv/solmax/feeds.json';
-
-$sunrise = new DateTime();
-$sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
-echo "\n\nalba: ...............: " . $sunrise->format("H:i:s");
-
-$sunset = new DateTime();
-$sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
-echo "\ntramonto alle .......: " . $sunset->format("H:i:s");
-
-$now = new DateTime();
-if ($now->getTimestamp() > $sunrise->getTimestamp() && $now->getTimestamp() < $sunset->getTimestamp()) {
-    $timeToSunSet = $sunset->getTimestamp() - $now->getTimestamp();
-    echo "\ntramonto fra $timeToSunSet secondi\n";
-    $status = 'on line';
-} else {
-    $status = 'off line';
+$pidFile = '/home/muttley/solar-pv/solmax/solarMax.pid';
+if (file_exists($pidFile)) {
+    echo "\nprocesso già in esecuzione\n\n";
+    die();
 }
 
-while (true){
-	$f = [];
-	if ($status == 'on line') {
-	// *** - ***
-	    $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
+if (!file_put_contents($pidFile, null)) {
+    echo "\nnon riesco a creare il file $pidFile\n\n";
+    die();
+}
 
-	    echo "\nconnecting  ........ ";
-	    if ($sm->connect()){
-		echo "[connected]";
-		echo "\nretrieve data ...... ";
-		$f = $sm->generateReport();
-		echo empty($f) ? "[failure]" : "[ok]";
-		echo "\nclose connection ... ";
-		$sm->close_connect();
-		echo "[ok]";
-	    }else{       
-		file_put_contents($outputJsonFeeds, json_encode(array_merge(getFeedsArray($outputJsonFeeds),resetSensor())));
-		echo "\nwrite reset sensor\n\n";
-		die();
-	    }
+function checkSun($lat, $lng) {
 
-	    echo "\nwrite feeds ........ ";
+    $sunrise = new DateTime();
+    $sunrise->setTimestamp(date_sunrise(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
+    //echo "\n\nalba: ...............: " . $sunrise->format("H:i:s");
 
-	}
+    $sunset = new DateTime();
+    $sunset->setTimestamp(date_sunset(time(), SUNFUNCS_RET_TIMESTAMP, $lat, $lng, 90));
+    //echo "\ntramonto alle .......: " . $sunset->format("H:i:s");
 
-	if (file_exists($outputJsonFeeds)) {
-	    $arrayFeeds = getFeedsArray($outputJsonFeeds);
-	} else {
-	    $arrayFeeds = [];
-	}
+    $now = new DateTime();
+    if ($now->getTimestamp() > $sunrise->getTimestamp() && $now->getTimestamp() < $sunset->getTimestamp()) {
+        //$timeToSunSet = $sunset->getTimestamp() - $now->getTimestamp();
+        //echo "\ntramonto fra $timeToSunSet secondi\n";
+        return 'on line';
+    } else {
+        return 'off line';
+    }
+}
 
-	$arrayFeeds['status'] = $status;
+while (true) {
+    $status = checkSun($lat, $lng);
+    $log = DateTime::RFC822 . "|";
+    $f = [];
+    if ($status == 'on line') {
+        $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-	foreach ($f as $key => $item) {
-	    $arrayFeeds[$item['description']] = $item['value'];
-	}
+        $log .= "connecting=";
+        if ($sm->connect()) {
+            $log .= "[ok]|retrieve data=";
+            $f = $sm->generateReport();
+            $log .= empty($f) ? "[failure]|" : "[ok]|";
+            $log .= "close connection=";
+            $sm->close_connect();
+            $log .= "[ok]";
+        } else {
+            file_put_contents($outputJsonFeeds, json_encode(array_merge(getFeedsArray($outputJsonFeeds), resetSensor())));
+            $log .= "write reset sensor|";
+            die();
+        }
 
-	echo file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]" : "[failure]";
-	sleep(3);
+        $log .= "write feeds=";
+
+    }
+
+    if (file_exists($outputJsonFeeds)) {
+        $arrayFeeds = getFeedsArray($outputJsonFeeds);
+    } else {
+        $arrayFeeds = [];
+    }
+
+    $arrayFeeds['status'] = $status;
+
+    foreach ($f as $key => $item) {
+        $arrayFeeds[$item['description']] = $item['value'];
+    }
+
+    $log .= file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]" : "[failure]";
+
+    echo $log . "\n";
+    sleep(5);
 
 }
 
 echo "\n\n";
-
-
 die();
 
 // ****** function *******
@@ -93,7 +106,8 @@ function getFeedsArray($inputFile) {
         return false;
     }
 }
-function resetSensor(){
+
+function resetSensor() {
     $template = '{
   "status": "off line",
   "DC_voltage_mV": 0,
@@ -104,7 +118,7 @@ function resetSensor(){
   "ac_power_p": 0,    
   "ac_frequency": 0
 }';
-    return  json_decode($template,true);
+    return json_decode($template, true);
 
 
 }
