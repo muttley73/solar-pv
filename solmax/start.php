@@ -35,46 +35,47 @@ if ($now->getTimestamp() > $sunrise->getTimestamp() && $now->getTimestamp() < $s
     $status = 'off line';
 }
 
+while (true){
+	$f = [];
+	if ($status == 'on line') {
+	// *** - ***
+	    $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-$f = [];
-if ($status == 'on line') {
-// *** - ***
-    $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
+	    echo "\nconnecting  ........ ";
+	    if ($sm->connect()){
+		echo "[connected]";
+		echo "\nretrieve data ...... ";
+		$f = $sm->generateReport();
+		echo empty($f) ? "[failure]" : "[ok]";
+		echo "\nclose connection ... ";
+		$sm->close_connect();
+		echo "[ok]";
+	    }else{       
+		file_put_contents($outputJsonFeeds, json_encode(array_merge(getFeedsArray($outputJsonFeeds),resetSensor())));
+		echo "\nwrite reset sensor\n\n";
+		die();
+	    }
 
-    echo "\nconnecting  ........ ";
-    if ($sm->connect()){
-        echo "[connected]";
-        echo "\nretrieve data ...... ";
-        $f = $sm->generateReport();
-        echo empty($f) ? "[failure]" : "[ok]";
-        echo "\nclose connection ... ";
-        $sm->close_connect();
-        echo "[ok]";
-    }else{
-        echo "[failure]";
-        $f = resetSensor();
-    }
+	    echo "\nwrite feeds ........ ";
 
-    echo "\nwrite feeds ........ ";
+	}
+
+	if (file_exists($outputJsonFeeds)) {
+	    $arrayFeeds = getFeedsArray($outputJsonFeeds);
+	} else {
+	    $arrayFeeds = [];
+	}
+
+	$arrayFeeds['status'] = $status;
+
+	foreach ($f as $key => $item) {
+	    $arrayFeeds[$item['description']] = $item['value'];
+	}
+
+	echo file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]" : "[failure]";
+	sleep(3);
 
 }
-
-if (file_exists($outputJsonFeeds)) {
-    $arrayFeeds = getFeedsArray($outputJsonFeeds);
-} else {
-    $arrayFeeds = [];
-}
-
-$arrayFeeds['status'] = $status;
-
-foreach ($f as $key => $item) {
-    $arrayFeeds[$item['description']] = $item['value'];
-}
-
-echo file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]" : "[failure]";
-//sleep(5);
-
-//}
 
 echo "\n\n";
 
