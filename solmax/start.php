@@ -50,20 +50,25 @@ function checkSun($lat, $lng) {
 
 while (true) {
     try {
+	echo "start...";
         $status = checkSun($lat, $lng);
+	echo "\n$status";
         $log = DateTime::RFC822 . "|";
+  	echo $log;
         $f = [];
         if ($status == 'on line') {
             $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
-
             $log .= "connecting=";
+	    echo $log;
             if ($sm->connect()) {
                 $log .= "[ok]|retrieve data=";
+		echo $log;
                 $f = $sm->generateReport();
                 $log .= empty($f) ? "[failure]|" : "[ok]|";
                 $log .= "close connection=";
                 $sm->close_connect();
                 $log .= "[ok]";
+		echo $log;
             } else {
                 file_put_contents($outputJsonFeeds, json_encode(array_merge(getFeedsArray($outputJsonFeeds), resetSensor())));
                 $log .= "write reset sensor|";
@@ -71,6 +76,7 @@ while (true) {
             }
 
             $log .= "write feeds=";
+	    echo "\nScrivo feeds";
 
         }
 
