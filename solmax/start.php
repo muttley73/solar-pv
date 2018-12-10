@@ -49,46 +49,51 @@ function checkSun($lat, $lng) {
 }
 
 while (true) {
-    $status = checkSun($lat, $lng);
-    $log = DateTime::RFC822 . "|";
-    $f = [];
-    if ($status == 'on line') {
-        $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
+    try {
+        $status = checkSun($lat, $lng);
+        $log = DateTime::RFC822 . "|";
+        $f = [];
+        if ($status == 'on line') {
+            $sm = new SolarMax($ADDR, $PORT, $DEVICE_ADDR, $TIMEOUT);
 
-        $log .= "connecting=";
-        if ($sm->connect()) {
-            $log .= "[ok]|retrieve data=";
-            $f = $sm->generateReport();
-            $log .= empty($f) ? "[failure]|" : "[ok]|";
-            $log .= "close connection=";
-            $sm->close_connect();
-            $log .= "[ok]";
-        } else {
-            file_put_contents($outputJsonFeeds, json_encode(array_merge(getFeedsArray($outputJsonFeeds), resetSensor())));
-            $log .= "write reset sensor|";
-            die();
+            $log .= "connecting=";
+            if ($sm->connect()) {
+                $log .= "[ok]|retrieve data=";
+                $f = $sm->generateReport();
+                $log .= empty($f) ? "[failure]|" : "[ok]|";
+                $log .= "close connection=";
+                $sm->close_connect();
+                $log .= "[ok]";
+            } else {
+                file_put_contents($outputJsonFeeds, json_encode(array_merge(getFeedsArray($outputJsonFeeds), resetSensor())));
+                $log .= "write reset sensor|";
+                die();
+            }
+
+            $log .= "write feeds=";
+
         }
 
-        $log .= "write feeds=";
+        if (file_exists($outputJsonFeeds)) {
+            $arrayFeeds = getFeedsArray($outputJsonFeeds);
+        } else {
+            $arrayFeeds = [];
+        }
 
+        $arrayFeeds['status'] = $status;
+
+        foreach ($f as $key => $item) {
+            $arrayFeeds[$item['description']] = $item['value'];
+        }
+
+        $log .= file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]" : "[failure]";
+
+        echo $log . "\n";
+        sleep(5);
+    }catch(Exception $e){
+        echo $e->getMessage();
+        die();
     }
-
-    if (file_exists($outputJsonFeeds)) {
-        $arrayFeeds = getFeedsArray($outputJsonFeeds);
-    } else {
-        $arrayFeeds = [];
-    }
-
-    $arrayFeeds['status'] = $status;
-
-    foreach ($f as $key => $item) {
-        $arrayFeeds[$item['description']] = $item['value'];
-    }
-
-    $log .= file_put_contents($outputJsonFeeds, json_encode($arrayFeeds)) ? "[ok]" : "[failure]";
-
-    echo $log . "\n";
-    sleep(5);
 
 }
 
