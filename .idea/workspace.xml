@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="93618615-cd51-4473-a7c8-bc2ca9ec4519" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solmax/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/solmax/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/solmax/start.php" beforeDir="false" afterPath="$PROJECT_DIR$/solmax/start.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +20,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/solmax/start.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="86" column="9" lean-forward="true" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+            <state relative-caret-position="285">
+              <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
+              <folding>
+                <element signature="e#115#134#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -28,8 +32,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="259" column="24" lean-forward="true" selection-start-line="259" selection-start-column="24" selection-end-line="259" selection-end-column="24" />
+            <state relative-caret-position="3810">
+              <caret line="259" column="24" selection-start-line="259" selection-start-column="24" selection-end-line="259" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -83,23 +87,25 @@
         <option value="$PROJECT_DIR$/solmax/tsconfig.json" />
         <option value="$PROJECT_DIR$/solmax/SolarMax.php" />
         <option value="$PROJECT_DIR$/solmax/package.json" />
+        <option value="$PROJECT_DIR$/solmax/.gitignore" />
         <option value="$PROJECT_DIR$/solmax/start.php" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="93" />
-    <option name="y" value="53" />
-    <option name="width" value="1684" />
-    <option name="height" value="1067" />
+    <option name="x" value="87" />
+    <option name="y" value="33" />
+    <option name="width" value="1752" />
+    <option name="height" value="1115" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="false" id="Update" />
+  </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -116,6 +122,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -158,7 +165,8 @@
       <workItem from="1544173747916" duration="3698000" />
       <workItem from="1544196820289" duration="727000" />
       <workItem from="1544432754131" duration="19000" />
-      <workItem from="1544432792096" duration="2513000" />
+      <workItem from="1544432792096" duration="2575000" />
+      <workItem from="1544517224653" duration="5569000" />
     </task>
     <task id="LOCAL-00001" summary="refactor">
       <created>1543849400127</created>
@@ -496,18 +504,25 @@
       <option name="project" value="LOCAL" />
       <updated>1544434229648</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="deamon mode">
+      <created>1544439354167</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1544439354167</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48269000" />
+    <option name="totallyTimeSpent" value="53900000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="93" y="53" width="1684" height="1067" extended-state="0" />
+    <frame x="87" y="33" width="1752" height="1115" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49786323" visible="true" weight="0.20757021" />
-      <window_info active="true" id="Structure" order="1" sideWeight="0.50213677" side_tool="true" visible="true" weight="0.20757021" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4965035" visible="true" weight="0.15240328" />
+      <window_info id="Structure" order="1" sideWeight="0.5034965" side_tool="true" visible="true" weight="0.15240328" />
       <window_info id="Favorites" order="2" sideWeight="0.50213677" side_tool="true" weight="0.20757021" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -519,7 +534,7 @@
       <window_info anchor="bottom" id="Docker" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32950193" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3283582" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.273374" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -584,15 +599,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/solmax/SolarMax.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="571">
-          <caret line="259" column="24" lean-forward="true" selection-start-line="259" selection-start-column="24" selection-end-line="259" selection-end-column="24" />
+        <state relative-caret-position="3810">
+          <caret line="259" column="24" selection-start-line="259" selection-start-column="24" selection-end-line="259" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1591" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/solmax/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="6" lean-forward="true" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/solmax/start.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="86" column="9" lean-forward="true" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
+        <state relative-caret-position="285">
+          <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
+          <folding>
+            <element signature="e#115#134#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
