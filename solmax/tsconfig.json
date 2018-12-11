@@ -1,0 +1,102 @@
+{
+  "ADR": {
+    "description": "Address",
+    "value": 5
+  },
+  "TYP": {
+    "description": "Type",
+    "value": "0x20020"
+  },
+  "SWV": {
+    "description": "Software version",
+    "value": null
+  },
+  "DDY": {
+    "description": "Date day",
+    "value": 4
+  },
+  "KHR": {
+    "description": "Operating hours",
+    "value": 24966
+  },
+  "KDY": {
+    "description": "Energy today [Wh]",
+    "value": 3500
+  },
+  "KLD": {
+    "description": "Energy yesterday [Wh]",
+    "value": 8500
+  },
+  "KMT": {
+    "description": "Energy this month [kWh]",
+    "value": 25
+  },
+  "KLM": {
+    "description": "Energy last monh [kWh]",
+    "value": 164
+  },
+  "KYR": {
+    "description": "Energy this year [kWh]",
+    "value": 3687
+  },
+  "KLY": {
+    "description": "Energy last year [kWh]",
+    "value": 4312
+  },
+  "KT0": {
+    "description": "Energy total [kWh]",
+    "value": 24255
+  },
+  "LAN": {
+    "description": "Language",
+    "value": 4
+  },
+  "UDC": {
+    "description": "DC voltage [mV]",
+    "value": 335300
+  },
+  "UL1": {
+    "description": "AC voltage [mV]",
+    "value": 226800
+  },
+  "IDC": {
+    "description": "DC current [mA]",
+    "value": 4740
+  },
+  "IL1": {
+    "description": "AC current [mA]",
+    "value": 6580
+  },
+  "PAC": {
+    "description": "AC power [mW]",
+    "value": 1491000
+  },
+  "PIN": {
+    "description": "Power installed [mW]",
+    "value": 3300000
+  },
+  "PRL": {
+    "description": "AC power [%]",
+    "value": 45
+  },
+  "CAC": {
+    "description": "Start ups",
+    "value": 3412
+  },
+  "FRD": {
+    "description": "???",
+    "value": 131859221
+  },
+  "TKK": {
+    "description": "Temerature Heat Sink",
+    "value": 46
+  },
+  "TNF": {
+    "description": "AC Frequency",
+    "value": 50.01
+  },
+  "BDN": {
+    "description": "Build number",
+    "value": 14860
+  }
+}

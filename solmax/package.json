@@ -1,0 +1,22 @@
+{
+  "status": "off line",
+  "operating_hours": 24998,
+  "energy_today_wh": 6600,
+  "energy_yesterday_Wh": 5300,
+  "energy_this_month_kWh": 50,
+  "energy_last_monh_kWh": 164,
+  "energy_this_year_kWh": 3712,
+  "energy_last_year_kWh": 4312,
+  "energy_total_[kWh]": 24279,
+  "DC_voltage_mV": 308300,
+  "AC_voltage_mV": 219800,
+  "DC_current_mA": 310,
+  "AC_current_mA": 530,
+  "AC_power_Wh": 74,
+  "power_installed_mw": 3300,
+  "ac_power_p": 2,
+  "start_ups": 3416,
+  "temerature_heat_sink_c": 30,
+  "ac_frequency": 50,
+  "": null
+}
