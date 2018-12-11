@@ -78,7 +78,12 @@ while (true) {
             $log .= "write feeds=";
             echo "\nScrivo feeds";
 
-        }
+        } else {
+
+	    file_put_contents($outputJsonFeeds, json_encode(array_merge(getFeedsArray($outputJsonFeeds), resetSensor())));
+            $log .= "write reset sensor|";
+
+	}
 
         if (file_exists($outputJsonFeeds)) {
             $arrayFeeds = getFeedsArray($outputJsonFeeds);
